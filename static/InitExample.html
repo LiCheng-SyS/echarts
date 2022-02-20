@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #container{
+            width: 700px;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+   <div id="main">
+       <div id="container"></div>
+   </div>
+   <script src="../js/echarts.js"></script>
+   <script>
+       //获取dom容器
+       const container=document.querySelector("#container");
+       const  chart=echarts.init(container);
+       //初始化容器
+       //xAxis x 轴体
+       //yAxis y 轴
+       //series 位系列图表, type图标类型,图标数据
+       const  option={
+           title:{
+               text:'前端',
+               left:'center',
+               subtext: 'js',
+               textStyle:{
+                   color:'maroon',
+                   fontsize:36,
+               },
+               subtextStyle:{
+                   color:'#333',
+                   fontsize:36,
+                   //如果副标题表达 会紧挨着绘图区
+               },
+               grid:{
+                   top:100
+               },
+
+           },
+           tooltip:{
+              //默认不写位为item值 item相关值为柱状体相关的数据
+               //trigger:'item', //item提示
+               //trigger:'axis', //轴提示
+               //trigger:'node', //无提示
+           },
+           legend:{
+               left: 'right'
+           },
+           toolbox:{
+               feature:{
+                   saveAsImage:{type:'jpg'},
+                   dataView:{},
+                   dataZoom:{},
+                   magicType:{
+                       type:['line']
+                   },
+                   restore:{}
+               }
+           },
+           xAxis: {
+               data:['html','css','js']
+           },
+           yAxis: {},
+           series:[
+               {
+               name:'count',
+               type:'bar',
+               data:[30,20,40]
+               },
+               {
+                   name:'sum',
+                   type:'bar',
+                   data:[40,20,50]
+               }
+           ]
+       }
+
+       chart.setOption(option);
+   </script>
+</body>
+</html>
